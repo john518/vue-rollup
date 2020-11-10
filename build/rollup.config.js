@@ -3,14 +3,17 @@ import vue from 'rollup-plugin-vue'; // Handle .vue SFC files
 import buble from '@rollup/plugin-buble'; // Transpile/polyfill with reasonable br
 
 export default {
-  input: 'src/MyComponent.vue',
+  input: 'src/wrapper.js',
   output: {
-    format: 'esm',
-    file: 'dist/MyComponent.js'
+    exports: 'named',
+    name: 'MyComponent'
   },
   plugins: [
     commonjs(),
-    vue(),
+    vue({
+      css: true, // Dynamically inject css as a <style> tag
+      compileTemplate: true, // Explicitly convert template to render function
+    }),
     buble(), // Transpile to ES5
   ]
 }
