@@ -3,10 +3,10 @@ import vue from 'rollup-plugin-vue'; // Handle .vue SFC files
 import buble from '@rollup/plugin-buble'; // Transpile/polyfill with reasonable br
 
 export default {
-  input: 'src/wrapper.js',
+  input: 'src/main.js',
   output: {
-    exports: 'named',
-    name: 'MyComponent'
+    file: 'dist/main-bundle.js',
+    format: 'umd'
   },
   plugins: [
     commonjs(),
