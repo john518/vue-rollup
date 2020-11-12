@@ -4,6 +4,8 @@ import replace from '@rollup/plugin-replace';  // to set node's process var
 import vue from 'rollup-plugin-vue'; // Handle .vue SFC files
 // import buble from '@rollup/plugin-buble'; // Transpile/polyfill with reasonable br
 
+const { PRODUCTION } = process.env;
+
 export default {
   input: 'src/main.js',
   output: {
@@ -14,7 +16,9 @@ export default {
     nodeResolve(),
     // commonjs(),
     replace({
-      'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env.NODE_ENV': JSON.stringify(
+          PRODUCTION ? 'production' : 'development'
+      )
     }),
     vue({
       css: true, // Dynamically inject css as a <style> tag

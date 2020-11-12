@@ -3,7 +3,8 @@
   "version": "1.2.3",
   "main": "dist/main-bundle.js",
   "scripts": {
-    "build": "rollup --config build/rollup.config.js"
+    "build": "rollup --environment PRODUCTION --config build/rollup.config.js",
+    "dev": "rollup --environment DEVELOPMENT --config build/rollup.config.js"
   },
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.3",
